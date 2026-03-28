@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Graphite PR Shortcut",
+  "version": "1.0",
+  "description": "Press Alt+G to open the current GitHub PR on Graphite",
+  "content_scripts": [
+    {
+      "matches": ["*://github.com/*/pull/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
