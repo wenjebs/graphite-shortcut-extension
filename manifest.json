@@ -1,11 +1,14 @@
 {
   "manifest_version": 3,
   "name": "Graphite PR Shortcut",
-  "version": "1.0",
-  "description": "Press Alt+G to open the current GitHub PR on Graphite",
+  "version": "1.1",
+  "description": "Option+Shift+G toggles a PR between GitHub and Graphite; Ctrl+P copies both links",
   "content_scripts": [
     {
-      "matches": ["*://github.com/*/pull/*"],
+      "matches": [
+        "*://github.com/*/pull/*",
+        "*://app.graphite.com/github/*/pull/*"
+      ],
       "js": ["content.js"]
     }
   ],
