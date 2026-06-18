@@ -1,17 +1,22 @@
 {
   "manifest_version": 3,
   "name": "Graphite PR Shortcut",
-  "version": "1.2",
-  "description": "Option+G toggles a PR between GitHub and Graphite; Ctrl+P copies both links",
+  "version": "1.3.1",
+  "description": "Toggle a PR between GitHub and Graphite, copy both links, and rain paper cranes. Shortcuts and crane physics are customizable.",
+  "permissions": ["storage"],
   "content_scripts": [
     {
       "matches": [
         "*://github.com/*/pull/*",
-        "*://app.graphite.com/github/*/pull/*"
+        "*://app.graphite.com/github/*"
       ],
       "js": ["content.js"]
     }
   ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Crane PR Shortcuts"
+  },
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",

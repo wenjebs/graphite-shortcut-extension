@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      :root {
+        --gold: #fdbb11;
+        --green: #76bf47;
+        --orange: #f48340;
+        --purple: #8068ad;
+        --pink: #ee4580;
+        --gray: #c0bcc0;
+        --blue: #458fcd;
+      }
+      * { box-sizing: border-box; }
+      body {
+        width: 320px;
+        margin: 0;
+        padding: 16px;
+        font: 13px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: #1c1c1e;
+        background: #fff;
+      }
+      h1 {
+        margin: 0 0 4px;
+        font-size: 16px;
+        background: linear-gradient(
+          135deg,
+          var(--green),
+          var(--gold),
+          var(--orange),
+          var(--pink),
+          var(--purple),
+          var(--blue)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .sub { margin: 0 0 14px; color: #6b6b70; font-size: 11px; }
+      h2 {
+        margin: 16px 0 8px;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--purple);
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin: 8px 0;
+      }
+      .row label { flex: 0 0 auto; color: #3a3a3c; }
+      .combo {
+        flex: 1;
+        min-width: 0;
+        text-align: center;
+        font-weight: 700;
+        padding: 6px 8px;
+        border-radius: 8px;
+        border: 1px dashed var(--gray);
+        background: #faf9fb;
+        cursor: pointer;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .combo.recording {
+        border-style: solid;
+        border-color: var(--pink);
+        background: #fff0f5;
+        color: var(--pink);
+      }
+      .slider label { display: flex; justify-content: space-between; color: #3a3a3c; }
+      .slider .val { font-weight: 700; color: var(--blue); }
+      input[type="range"] { width: 100%; accent-color: var(--orange); margin: 2px 0 6px; }
+      .actions { display: flex; gap: 8px; margin-top: 16px; }
+      button {
+        flex: 1;
+        padding: 9px;
+        border: 0;
+        border-radius: 9px;
+        font-weight: 700;
+        font-size: 13px;
+        cursor: pointer;
+        color: #fff;
+      }
+      #test { background: var(--green); }
+      #reset { background: var(--gray); color: #1c1c1e; }
+      #status { margin-top: 10px; min-height: 14px; font-size: 11px; color: var(--green); text-align: center; }
+      .hint { font-size: 10px; color: #9a9aa0; margin-top: 2px; }
+    </style>
+  </head>
+  <body>
+    <h1>🐦 Crane PR Shortcuts</h1>
+    <p class="sub">Click a shortcut, then press the keys you want.</p>
+
+    <h2>Shortcuts</h2>
+    <div class="row">
+      <label>Toggle GitHub ⇄ Graphite</label>
+      <div class="combo" id="rec-toggle" data-key="toggle" tabindex="0">…</div>
+    </div>
+    <div class="row">
+      <label>Copy links + cranes</label>
+      <div class="combo" id="rec-copy" data-key="copy" tabindex="0">…</div>
+    </div>
+
+    <h2>Crane Explosion 🎉</h2>
+    <div class="slider">
+      <label>Crane count <span class="val" id="v-count"></span></label>
+      <input type="range" id="count" min="1" max="500" step="1" />
+    </div>
+    <div class="slider">
+      <label>Min size (px) <span class="val" id="v-sizeMin"></span></label>
+      <input type="range" id="sizeMin" min="8" max="120" step="1" />
+    </div>
+    <div class="slider">
+      <label>Max size (px) <span class="val" id="v-sizeMax"></span></label>
+      <input type="range" id="sizeMax" min="8" max="200" step="1" />
+    </div>
+    <div class="slider">
+      <label>Spread <span class="val" id="v-spread"></span></label>
+      <input type="range" id="spread" min="0.1" max="1.5" step="0.05" />
+    </div>
+    <div class="slider">
+      <label>Gravity <span class="val" id="v-gravity"></span></label>
+      <input type="range" id="gravity" min="-200" max="400" step="10" />
+    </div>
+    <div class="slider">
+      <label>Spin (°) <span class="val" id="v-spin"></span></label>
+      <input type="range" id="spin" min="0" max="1440" step="20" />
+    </div>
+    <div class="slider">
+      <label>Min duration (s) <span class="val" id="v-durMin"></span></label>
+      <input type="range" id="durMin" min="0.3" max="3" step="0.1" />
+    </div>
+    <div class="slider">
+      <label>Max duration (s) <span class="val" id="v-durMax"></span></label>
+      <input type="range" id="durMax" min="0.3" max="4" step="0.1" />
+    </div>
+
+    <div class="actions">
+      <button id="test">Test 🐦</button>
+      <button id="reset">Reset</button>
+    </div>
+    <p class="hint">Test fires on the active GitHub/Graphite PR tab.</p>
+    <div id="status"></div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
