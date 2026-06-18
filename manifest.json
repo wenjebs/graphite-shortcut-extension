@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Graphite PR Shortcut",
-  "version": "1.1",
-  "description": "Option+Shift+G toggles a PR between GitHub and Graphite; Ctrl+P copies both links",
+  "version": "1.2",
+  "description": "Option+G toggles a PR between GitHub and Graphite; Ctrl+P copies both links",
   "content_scripts": [
     {
       "matches": [
